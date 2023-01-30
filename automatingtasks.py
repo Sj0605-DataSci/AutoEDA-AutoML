@@ -62,4 +62,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    local_css("Sj0605-DataSci/AutoEDA-AutoML/style/style.css")
+    local_css("style/style.css")

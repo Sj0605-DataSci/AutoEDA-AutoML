@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from lazypredict.Supervised import LazyRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.datasets import load_boston
+from sklearn.datasets import fetch_california_housing
 import matplotlib.pyplot as plt
 import seaborn as sns
 import base64
@@ -147,24 +147,14 @@ if uploaded_file is not None:
 else:
     st.info('Awaiting for CSV file to be uploaded.')
     if st.button('Press to use Example Dataset'):
-        # Diabetes dataset
-        #diabetes = load_diabetes()
-        #X = pd.DataFrame(diabetes.data, columns=diabetes.feature_names)
-        #Y = pd.Series(diabetes.target, name='response')
-        #df = pd.concat( [X,Y], axis=1 )
 
-        #st.markdown('The Diabetes dataset is used as the example.')
-        #st.write(df.head(5))
-
-        # Boston housing dataset
-        boston = load_boston()
-        #X = pd.DataFrame(boston.data, columns=boston.feature_names)
-        #Y = pd.Series(boston.target, name='response')
-        X = pd.DataFrame(boston.data, columns=boston.feature_names).loc[:100] # FOR TESTING PURPOSE, COMMENT THIS OUT FOR PRODUCTION
-        Y = pd.Series(boston.target, name='response').loc[:100] # FOR TESTING PURPOSE, COMMENT THIS OUT FOR PRODUCTION
+        # California housing dataset
+        california = fetch_california_housing()
+        X = pd.DataFrame(california.data, columns=california.feature_names).loc[:100] # FOR TESTING PURPOSE, COMMENT THIS OUT FOR PRODUCTION
+        Y = pd.Series(california.target, name='response').loc[:100] # FOR TESTING PURPOSE, COMMENT THIS OUT FOR PRODUCTION
         df = pd.concat( [X,Y], axis=1 )
 
-        st.markdown('The Boston housing dataset is used as the example.')
+        st.markdown('The California housing dataset is used as the example.')
         st.write(df.head(5))
 
         build_model(df)

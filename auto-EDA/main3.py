@@ -11,7 +11,6 @@ def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-local_css("style/style.css")
 
 
 
@@ -20,6 +19,9 @@ st.write('''
 # **The EDA App**
 This is the **EDA App** created in Streamlit using the **pandas-profiling** library.
 ''')
+
+local_css("style/style.css")
+
 
 # Upload CSV data
 with st.sidebar.header('1. Upload your CSV data'):

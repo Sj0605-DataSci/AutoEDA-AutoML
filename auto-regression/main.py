@@ -7,6 +7,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import base64
 import io
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css("style/style.css")
+
+
+
+
 #---------------------------------#
 # Page layout
 ## Page expands to full width
